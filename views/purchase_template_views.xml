@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="product_template_form_view_inherit_custom" model="ir.ui.view">
+        <field name="name">product.template.form.inherit.custom</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_only_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='barcode']" position="after">
+                <field name="_generic_name"/>
+            </xpath>
+            <xpath expr="//page[@name='inventory']" position="inside">
+                <group string="Tara Information">
+                    <field name="_tara_status"/>
+                    <field name="_tara_description" invisible="_tara_status == 'sin_tara'"/>
+                    <field name="purchase_orders"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+    <menuitem id="menu_custom_stock_product" name="Products" parent="menu_custom_stock_root" action="stock.stock_product_normal_action" sequence="30"/>
+</odoo>
