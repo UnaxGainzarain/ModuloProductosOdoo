@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_order_form_inherit_custom_stock" model="ir.ui.view">
+        <field name="name">sale.order.form.inherit.custom.stock</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <!-- Inyectamos el checkbox en la tabla de líneas de pedido, justo después de la cantidad -->
+            <xpath expr="//field[@name='order_line']/list/field[@name='product_uom_qty']" position="after">
+                <field name="use_existing_stock" string="Usar Stock" />
+            </xpath>
+        </field>
+    </record>
+</odoo>
