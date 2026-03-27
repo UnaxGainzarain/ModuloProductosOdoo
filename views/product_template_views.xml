@@ -52,5 +52,4 @@
         </field>
     </record>
 
-    <menuitem id="menu_custom_stock_product" name="Products" parent="menu_custom_stock_root" action="stock.stock_product_normal_action" sequence="30"/>
 </odoo>
