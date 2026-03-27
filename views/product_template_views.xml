@@ -14,27 +14,7 @@
                     <field name="_tara_description" invisible="_tara_status == 'sin_tara'"/>
                 </group>
             </xpath>
-            <xpath expr="//notebook" position="inside">
-                <page name="custom_files" string="Archivos y Documentos">
-                    <field name="custom_file_ids"/>
-                </page>
-            </xpath>
         </field>
     </record>
-
-    <!-- Vista de lista independiente para los archivos -->
-    <record id="view_product_custom_file_tree" model="ir.ui.view">
-        <field name="name">custom.stock.product.file.tree</field>
-        <field name="model">custom_stock.product_file</field>
-        <field name="arch" type="xml">
-            <tree editable="bottom">
-                <field name="description"/>
-                <field name="custom_file" filename="file_name" widget="binary"/>
-                <field name="file_name" column_invisible="True"/>
-            </tree>
-        </field>
-    </record>
-
-
     <menuitem id="menu_custom_stock_product" name="Products" parent="menu_custom_stock_root" action="stock.stock_product_normal_action" sequence="30"/>
 </odoo>

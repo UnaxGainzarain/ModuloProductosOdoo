@@ -1,22 +1,7 @@
 from odoo import models, fields
 
-class ProductCustomFile(models.Model):
-    _name = 'custom_stock.product_file'
-    _description = 'Archivo de Producto Personalizado'
-
-    description = fields.Char(string='Descripción del Archivo', required=True)
-    product_tmpl_id = fields.Many2one('product.template', string='Producto', ondelete='cascade')
-    custom_file = fields.Binary(string='Archivo', required=True)
-    file_name = fields.Char(string='Nombre del Archivo')
-
 class ProductTemplate(models.Model):
     _inherit = 'product.template'
-
-    custom_file_ids = fields.One2many(
-        'custom_stock.product_file', 
-        'product_tmpl_id', 
-        string='Archivos Adicionales'
-    )
 
     _tara_status = fields.Selection(
         selection=[
