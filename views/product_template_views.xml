@@ -27,6 +27,12 @@
         <field name="model">product.product</field>
         <field name="inherit_id" ref="product.product_normal_form_view"/>
         <field name="arch" type="xml">
+            <xpath expr="//page[@name='inventory']" position="inside">
+                <group string="Tara Information">
+                    <field name="_tara_status"/>
+                    <field name="_tara_description" invisible="_tara_status == 'sin_tara'"/>
+                </group>
+            </xpath>
             <xpath expr="//notebook" position="inside">
                 <page name="custom_images_tab_variant" string="Imágenes Adicionales">
                     <field name="custom_image_ids"/>
