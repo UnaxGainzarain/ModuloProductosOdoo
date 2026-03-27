@@ -5,7 +5,7 @@
     'description': 'Manage stock locations and inventory records.',
     'category': 'Inventory',
     'author': 'Unax',
-    'depends': ['base', 'product'],
+    'depends': ['base', 'product', 'purchase', 'stock'],
     'data': [
         'security/ir.model.access.csv',
         'views/stock_location_views.xml',

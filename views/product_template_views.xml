@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+    <!-- 1. Vista para Plantillas de Producto (Donde está el código de barras y la tara) -->
     <record id="product_template_form_view_inherit_custom" model="ir.ui.view">
         <field name="name">product.template.form.inherit.custom</field>
         <field name="model">product.template</field>
@@ -14,7 +15,39 @@
                     <field name="_tara_description" invisible="_tara_status == 'sin_tara'"/>
                 </group>
             </xpath>
+            <xpath expr="//notebook" position="inside">
+                <page name="custom_images_tab" string="Imágenes Adicionales">
+                    <field name="custom_image_ids"/>
+                </page>
+            </xpath>
         </field>
     </record>
+
+    <!-- 2. Vista INYECTADA también para Variantes de Producto (Donde hiciste la captura) -->
+    <record id="product_variant_form_view_inherit_custom" model="ir.ui.view">
+        <field name="name">product.product.form.inherit.custom.images</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_normal_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page name="custom_images_tab_variant" string="Imágenes Adicionales">
+                    <field name="custom_image_ids"/>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Vista de lista independiente para las imágenes -->
+    <record id="view_custom_stock_product_image_tree" model="ir.ui.view">
+        <field name="name">custom.stock.product.image.tree</field>
+        <field name="model">custom_stock.product_image</field>
+        <field name="arch" type="xml">
+            <list editable="bottom">
+                <field name="name"/>
+                <field name="custom_image" filename="name" widget="binary"/>
+            </list>
+        </field>
+    </record>
+
     <menuitem id="menu_custom_stock_product" name="Products" parent="menu_custom_stock_root" action="stock.stock_product_normal_action" sequence="30"/>
 </odoo>

@@ -1,7 +1,21 @@
 from odoo import models, fields
 
+class ProductCustomImage(models.Model):
+    _name = 'custom_stock.product_image'
+    _description = 'Imagen de Producto Personalizada'
+
+    name = fields.Char(string='Descripción', required=True)
+    custom_image = fields.Binary(string='Imagen', required=True)
+    product_tmpl_id = fields.Many2one('product.template', string='Producto', ondelete='cascade')
+
 class ProductTemplate(models.Model):
     _inherit = 'product.template'
+
+    custom_image_ids = fields.One2many(
+        'custom_stock.product_image',
+        'product_tmpl_id',
+        string='Imágenes Adicionales'
+    )
 
     _tara_status = fields.Selection(
         selection=[

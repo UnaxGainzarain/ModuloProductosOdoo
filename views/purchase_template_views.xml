@@ -15,6 +15,7 @@
                     <field name="purchase_orders"/>
                 </group>
             </xpath>
+
         </field>
     </record>
 

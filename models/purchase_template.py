@@ -21,4 +21,4 @@ class ProductTemplate(models.Model):
     _generic_name = fields.Char(    
         string='Nombre Genérico',
         help='Nombre alternativo para presupuestos con nombres genéricos (ej: Silla de comedor).'
-    )
+    )
